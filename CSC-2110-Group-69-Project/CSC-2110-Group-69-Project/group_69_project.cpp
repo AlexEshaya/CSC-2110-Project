@@ -19,11 +19,13 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 int main()
 {
 	//header
-	cout << "////////////////" << endl;
-	cout << "/// Group 69 ///" << endl;
-	cout << "////////////////" << endl;
+	cout << "|//////////////|" << endl;
+	cout << "|   Group 69   |" << endl;
+	cout << "|//////////////|" << endl;
 	
 	//end of program
 	cout << endl << endl << "end." << endl;
 	return 0;
+	
+	// OWA OWA
 }
