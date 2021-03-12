@@ -2,7 +2,7 @@
 //
 // Title:      Final Project
 // Course:     CSC 2110
-// Author:     Lucas Jackman, Neil Rastogi
+// Author:     Lucas Jackman, Neil Rastogi, Luke Javier,
 // Date:       3/11/2021
 // Description:
 //	A C++ console based game.
