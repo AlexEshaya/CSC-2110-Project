@@ -1,1 +1,2 @@
-//hi
+#pragma once
+#include "character.h"
