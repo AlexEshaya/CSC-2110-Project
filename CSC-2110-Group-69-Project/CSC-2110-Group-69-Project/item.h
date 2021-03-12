@@ -1,5 +1,5 @@
 // Neil
-
+#pragma once
 #include <cstdlib> // For several general-purpose functions
 #include <fstream> // For file handling
 #include <iomanip> // For formatted output
