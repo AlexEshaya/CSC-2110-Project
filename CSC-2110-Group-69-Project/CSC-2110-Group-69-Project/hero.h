@@ -7,7 +7,7 @@ class Hero : public Character{
     int retreatCount;
   public:
     //public variables
-      Item*[3] bag;
+      Item* bag[3];
     //public functions
       const int getDefensePower();
       void decreaseDefensePower();
