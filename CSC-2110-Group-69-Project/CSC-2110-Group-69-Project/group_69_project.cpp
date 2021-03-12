@@ -2,7 +2,7 @@
 //
 // Title:      Final Project
 // Course:     CSC 2110
-// Author:     Lucas Jackman,
+// Author:     Lucas Jackman, Neil Rastogi
 // Date:       3/11/2021
 // Description:
 //	A C++ console based game.
@@ -26,5 +26,4 @@ int main()
 	//end of program
 	cout << endl << endl << "end." << endl;
 	return 0;
-	// ITSSSSSSSSSSSSSSSSSS NEILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
 }
