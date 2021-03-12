@@ -12,7 +12,11 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 class Item
 {
 private:
-int type;
-int value;
+  int type;
+  int value;
 public:
-bool isHP()
+  bool isHP() const;
+  bool isDefense() const;
+  int getValue() const;
+  Item(int, int);
+}
