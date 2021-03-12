@@ -1,13 +1,19 @@
 #pragma once
 #using namespace std;
 
-class character{
-  protected:
-	int hp;
-	int attackPower;
-  public:
-	void setHP(int);
-	const int getHP();
-	void setAttackPower(int);
-	const int getAttackPower();
+class Character
+{
+	public:
+		//HP mutator and accessor
+		virtual void setHP(int) = 0;
+		virtual int getHP() const = 0;
+	
+		//AttackPower mutator and accessor
+		virtual void setAttackPower(int) = 0;
+		virtual int getAttackPower() const = 0;
+
+	protected:
+		//Variables
+		int health;
+		int attackPower;
 };
