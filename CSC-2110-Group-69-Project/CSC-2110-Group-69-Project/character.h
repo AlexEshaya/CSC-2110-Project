@@ -1,2 +1,6 @@
 #pragma once
-#include "character.h"
+
+class character{
+  protected:
+  public:
+};
