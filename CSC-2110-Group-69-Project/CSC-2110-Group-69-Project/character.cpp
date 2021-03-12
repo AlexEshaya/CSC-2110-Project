@@ -1,1 +1,1 @@
-class character{};
+#include "character.h"
