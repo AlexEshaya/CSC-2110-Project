@@ -11,7 +11,7 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 class Hero : public character
 {
   private:
-  int defencePower;
+  int defensePower;
   int retreatCount;
   
   public:
