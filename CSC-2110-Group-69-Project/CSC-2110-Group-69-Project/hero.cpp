@@ -6,3 +6,10 @@
 using namespace std; // So "std::cout" may be abbreviated to "cout"
 
 #include "hero.h"
+
+// Construct with parameters!
+Hero(int,int,int,int)
+{
+  // The arguments of the Hero’s constructor are hp, attack power, defense power, and retreat count
+  // This constructor initializes the corresponding member variables and the bag with 3 null pointers
+}
