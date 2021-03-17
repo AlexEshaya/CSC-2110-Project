@@ -4,7 +4,7 @@
 
 #include "character.h"
 
-class Hero:
+class Hero : public character
 {
   private:
   int defencePower;
