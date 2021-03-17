@@ -17,13 +17,15 @@ class Hero : public character
   public:
   Item*[3] bag;
   int getDefensePower() const;
-  void decreaseDefensePower();
-  void setDefensePower(int);
   int getRetreatCount() const;
-  void decreaseRetreatCount();
-  bool anyItems();
-  bool isAlive() const;
   int operator*(Monster& m);
+  void decreaseDefensePower(); // The decreaseDefensePower function decreases defensePower by 1
+  void decreaseRetreatCount(); // The decreaseRetreatCount function decreases retreatCount by 1
+  void setDefensePower(int);
+  bool anyItems(); //  The anyItems function returns false when all pointers in bag are NULL; otherwise, returns true
+  bool isAlive() const; // The isAlive function returns true when hp is greater than 0; otherwise, returns false
   
+  // The arguments of the Hero’s constructor are hp, attack power, defense power, and retreat count
+  // This constructor initializes the corresponding member variables and the bag with 3 null pointers
   Hero(int,int,int,int);
 };
