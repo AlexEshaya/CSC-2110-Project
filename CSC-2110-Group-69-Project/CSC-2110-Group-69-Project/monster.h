@@ -4,7 +4,7 @@
 
 #include "character.h"
 
-class monster:
+class monster:character:
 {
   public:
   void decreaseAttackPower(); // The decreaseAttackPower function decreases attackPower by 1
