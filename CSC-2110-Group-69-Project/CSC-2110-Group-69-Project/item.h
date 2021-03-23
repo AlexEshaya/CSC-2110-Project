@@ -12,7 +12,7 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 class Item
 {
 private:
-  int type; // 0 = hp, 1 = defense
+  int type; // 0 = hp, 1 = defense, 2 = attack. An ATTACK ITEM will be our unique feature for the game.
   int value;
 public:
   bool isHP() const;
