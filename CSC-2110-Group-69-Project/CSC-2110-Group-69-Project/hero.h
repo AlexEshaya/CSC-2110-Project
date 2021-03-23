@@ -18,6 +18,5 @@ class Hero : public Character{
       const bool isAlive();
       int operator*(Monster& m);
     //constructors
-      Hero();
       Hero(int, int, int, int);
 };
