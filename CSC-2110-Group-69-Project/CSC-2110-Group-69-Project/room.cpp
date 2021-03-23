@@ -12,6 +12,7 @@ Room::Room(string room_name, Room* A, Room* B, Room* C, Room* D, bool final_room
 }
 
 //make rest of constructors
+//make sure these work and check if we need to set them to nullptr 
 
 void Room::setName(string room_name) 
 {
