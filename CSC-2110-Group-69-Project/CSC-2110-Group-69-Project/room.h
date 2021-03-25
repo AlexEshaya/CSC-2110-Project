@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
 #include <iostream>
+using namespace std;
 
-class Room:
+class Room
 {
   private:
   string name;
