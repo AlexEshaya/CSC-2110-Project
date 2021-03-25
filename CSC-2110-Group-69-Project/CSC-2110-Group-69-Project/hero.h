@@ -1,4 +1,7 @@
-#pragma once
+#include "character.h"
+#include "item.h"
+#include "monster.h"
+using namespace std;
 
 class Hero : public Character{
   private:
