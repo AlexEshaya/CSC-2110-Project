@@ -1,5 +1,7 @@
 #include "game.h"
 
+
+
 game::game() {
 
 }
@@ -12,9 +14,9 @@ void game::run() {
 	//create map
 	createMap();
 
-	//PreviousRoom = null
+	previousRoom = NULL;
 	
-	//While (hero.alive and !currentRoom.isExit){
+	while ((hero.alive and !currentRoom.isExit)){
 		//Show room information (name, monster’s info, item’s info).
 		//If Retreat? { // ask user if wants to retreat, assuming retreat count >0
 			//Move to previousRoom
@@ -40,7 +42,7 @@ void game::run() {
 
 			//execute “move” process (and update previousRoom pointer)
 		//}	
-	//}
+	}
 
 	//run while player is alive and not in exit room
 	while (heroName.isAlive() && !(currentRoom->isExit()) == true) {
@@ -84,9 +86,33 @@ void game::run() {
 
 		//fight
 
-		//death check
+	  //death check
       //pickup item
+
       //move rooms
+		cout << "Which room would you like to move onto: ? ";
+		if (currentRoom->getNorthRoom() != previousRoom) 
+		{
+			cout << "You can enter the north room (A)." << endl;
+		}
+		else if (currentRoom->getSouthRoom() != previousRoom) 
+		{
+			cout << "You can enter the south room (B)." << endl;
+		}
+		else if (currentRoom->getEastRoom() != previousRoom) 
+		{
+			cout << "You can enter the east room (C)." << endl;
+		}
+		else if (currentRoom->getWestRoom() != previousRoom)
+		{
+			cout << "You can enter the west room (D)." << endl;
+		}
+
+		cin >> input;
+		if ((input = 'A')) 
+		{
+			currentRoom->setNorthRoom();	//need to add the createMap function before we can add this parameter
+		}
 
 	}
 	
@@ -99,3 +125,4 @@ void game::run() {
 	}
 
 }
+
