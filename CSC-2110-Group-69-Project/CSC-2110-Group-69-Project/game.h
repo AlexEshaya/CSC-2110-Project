@@ -1,22 +1,28 @@
-#include "room.h"
-#include "hero.h"
-#include <string>
+#pragma once
 #include <iostream>
+#include "hero.h"
+#include "room.h"
 using namespace std;
 
-class game
-{
- private:
+class game{
+  private:
 	//private variables
-	Room* previousRoom;
-	Room* currentRoom;
-	//Hero HeroName = Hero(100, 100, 100, 100);
-	char input;
+		Room* previousRoom;
+		Room* currentRoom;
+		Room *rooms[8];
+		Monster* monsters[3];
+		Item* itemPtr;
+		Monster* monstrPtr;
+		Room* rPtr;
+	
+
+		Hero heroName(int,int,int,int);
+		char input;
 	//private functions
-	void createMap();
- public:
+		void createMap();
+  public:
 	//public functions
-	void run();
+		void run();
 	//constructors
-	game();
+		game();
 };
