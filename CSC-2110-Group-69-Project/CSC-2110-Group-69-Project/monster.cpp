@@ -1,8 +1,16 @@
-#include <cstdlib> // For several general-purpose functions
-#include <fstream> // For file handling
-#include <iomanip> // For formatted output
-#include <iostream> // For cin, cout, and system
-#include <string> // For string data type
-using namespace std; // So "std::cout" may be abbreviated to "cout"
-
 #include "monster.h"
+
+Monster::Monster(int hP, int aP)
+{
+  hp = hP;
+  
+  if (aP => 1)
+  {
+    attackPower = aP;
+  }
+}
+
+void Monster::decreaseAttackPower()
+{
+  attackPower = attackPower - 1;
+}
