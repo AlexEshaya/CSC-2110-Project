@@ -10,13 +10,11 @@ class game{
 		Room* previousRoom;
 		Room* currentRoom;
 		Room *rooms[8];
+		Item* items[3];
 		Monster* monsters[3];
-		Item* itemPtr;
-		Monster* monstrPtr;
 		Room* rPtr;
-	
+		//Hero heroName;
 
-		Hero heroName(int,int,int,int);
 		char input;
 	//private functions
 		void createMap();
