@@ -1,12 +1,12 @@
 #include "hero.h"
 
 // constructor with parameters!
-Hero::Hero(int hp, int attackPower, int defensePower, int retreatCount)
+Hero::Hero(int hP, int aP, int dP, int rC)
 {
-  hp = hp;
-  attackPower = attackPower;
-  defensePower = defensePower;
-  retreatCount = retreatCount;
+  hp = hP;
+  attackPower = aP;
+  defensePower = dP;
+  retreatCount = rC;
   Item*[3] bag;
 }
 
@@ -45,11 +45,11 @@ void Hero::decreaseDefensePower()
   defensePower = defensePower - 1;
 }
 
-void Hero::setDefensePower(int defensePower)
+void Hero::setDefensePower(int dP)
 {
-  if (defensePower => 1)
+  if (dP => 1)
   {
-    defensePower = defensePower;
+    defensePower = dP;
   }
 }
 
