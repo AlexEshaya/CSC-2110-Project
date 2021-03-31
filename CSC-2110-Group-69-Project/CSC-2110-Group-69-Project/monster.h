@@ -3,7 +3,7 @@
 
 class Monster : public Character
 {
-public:
-	void decreaseAttackPower();
-	Monster(int, int);
+  public:
+  void decreaseAttackPower();
+  Monster(int hp, int attackPower);
 };
