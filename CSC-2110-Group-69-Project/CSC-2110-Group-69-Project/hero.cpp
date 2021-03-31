@@ -7,28 +7,70 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 
 #include "hero.h"
 
-// Construct with parameters!
-Hero(int hp, int attackPower, int defensePower, int retreatCount)
+//constructor
+Hero::Hero(int hp, int attackPower, int defensePower, int retreatCount)
 {
-  // The arguments of the Hero’s constructor are hp, attack power, defense power, and retreat count
-  // This constructor initializes the corresponding member variables and the bag with 3 null pointers
+  int hp;
+  int attackPower;
+  int defensePower;
+  int retreatPower;
   Item*[3] bag;
 }
 
-// decreaseRetreatCount function decreases retreatCount by 1!
-void decreaseRetreatCount()
+//functions
+int operator*(Monster& m)
 {
-  retreatCount = retreatCount - 1;
+  Monster.hp = Monster.hp - hero.attackPower < 0 ? 0 : Monster.hp-hero.attackPower;
+  hero.hp = hero.hp - Monster.attackPower/hero.defensePower;
+  
+  Monster.decreaseAttackPower;
+  hero.decreaseDefensePower;
+  
+  if (hero.hp == 0) // hero died
+  {
+    return -1;
+  }
+  
+  else if (Monster.hp == 0)  // monster died
+  {
+    return 1;
+  }
+  
+  else   // no character died
+  {
+    return 0;
+  }
 }
 
-// decreaseDefensePower function decreases defensePower by 1!
-void decreaseDefensePower()
+const int Hero::getDefensePower()
+{
+  return defensePower;
+}
+
+void Hero::decreaseDefensePower()
 {
   defensePower = defensePower - 1;
 }
 
-//  anyItems function returns false when all pointers in bag are NULL; otherwise, returns true!
-bool anyItems()
+void Hero::setDefensePower(int defensePower)
+{
+  if (defensePower > 1)
+  {
+    defensePower = defensePower;
+  }
+}
+
+const int Hero::getRetreatCount()
+{
+  return retreatCount;
+}
+
+void Hero::decreaseRetreatCount()
+{
+  retreatCount = retreatCount - 1;
+}
+
+const bool Hero::anyItems()
 {
   if (Item*[3] bag = NULL)
   {
@@ -41,8 +83,7 @@ bool anyItems()
   }
 }
 
-// isAlive function returns true when hp is greater than 0; otherwise, returns false!
-bool isAlive() const
+const bool Hero::isAlive()
 {
   if (hp > 0)
   {
