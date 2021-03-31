@@ -23,11 +23,11 @@ class Hero : public Character{
     //constructors
       Hero(int, int, int, int);
   
-  //health mutator and accessor
-	void setHP(int);
-	int getHP() const;
+    //health mutator and accessor
+      void setHP(int);
+      int getHP() const;
 
-	//AttackPower mutator and accessor
-	void setAttackPower(int);
-	int getAttackPower() const;
+    //AttackPower mutator and accessor
+      void setAttackPower(int);
+      int getAttackPower() const;
 };
