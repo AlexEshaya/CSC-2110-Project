@@ -1,16 +1,16 @@
 #include "hero.h"
 
-//constructor
+// constructor with parameters!
 Hero::Hero(int hp, int attackPower, int defensePower, int retreatCount)
 {
-  int hp;
-  int attackPower;
-  int defensePower;
-  int retreatPower;
+  hp = hp;
+  attackPower = attackPower;
+  defensePower = defensePower;
+  retreatCount = retreatCount;
   Item*[3] bag;
 }
 
-//functions
+// functions!
 int operator*(Monster& m)
 {
   Monster.hp = Monster.hp - hero.attackPower < 0 ? 0 : Monster.hp-hero.attackPower;
@@ -47,7 +47,7 @@ void Hero::decreaseDefensePower()
 
 void Hero::setDefensePower(int defensePower)
 {
-  if (defensePower > 1)
+  if (defensePower => 1)
   {
     defensePower = defensePower;
   }
