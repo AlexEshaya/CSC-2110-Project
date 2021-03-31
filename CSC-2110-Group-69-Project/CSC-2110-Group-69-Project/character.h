@@ -14,6 +14,6 @@ class Character
 
 	protected:
 		//Variables
-		int hp;
+		int health;
 		int attackPower;
 };
