@@ -1,23 +1,16 @@
-#include <cstdlib> // For several general-purpose functions
-#include <fstream> // For file handling
-#include <iomanip> // For formatted output
-#include <iostream> // For cin, cout, and system
-#include <string> // For string data type
-using namespace std; // So "std::cout" may be abbreviated to "cout"
-
 #include "hero.h"
 
-//constructor
-Hero::Hero(int hp, int attackPower, int defensePower, int retreatCount)
+// constructor with parameters!
+Hero::Hero(int hP, int aP, int dP, int rC)
 {
-  int hp;
-  int attackPower;
-  int defensePower;
-  int retreatPower;
+  hp = hP;
+  attackPower = aP;
+  defensePower = dP;
+  retreatCount = rC;
   Item*[3] bag;
 }
 
-//functions
+// functions!
 int operator*(Monster& m)
 {
   Monster.hp = Monster.hp - hero.attackPower < 0 ? 0 : Monster.hp-hero.attackPower;
@@ -52,11 +45,11 @@ void Hero::decreaseDefensePower()
   defensePower = defensePower - 1;
 }
 
-void Hero::setDefensePower(int defensePower)
+void Hero::setDefensePower(int dP)
 {
-  if (defensePower > 1)
+  if (dP => 1)
   {
-    defensePower = defensePower;
+    defensePower = dP;
   }
 }
 
