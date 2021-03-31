@@ -22,4 +22,12 @@ class Hero : public Character{
       int operator*(Monster& m);
     //constructors
       Hero(int, int, int, int);
+  
+  //health mutator and accessor
+	void setHP(int);
+	int getHP() const;
+
+	//AttackPower mutator and accessor
+	void setAttackPower(int);
+	int getAttackPower() const;
 };
