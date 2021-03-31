@@ -1,6 +1,7 @@
+#pragma once
 #include "character.h"
-#include "item.h"
 #include "monster.h"
+#include "item.h"
 using namespace std;
 
 class Hero : public Character{
@@ -12,22 +13,24 @@ class Hero : public Character{
     //public variables
       Item* bag[3];
     //public functions
-      const int getDefensePower();
+      int getDefensePower() const;
       void decreaseDefensePower();
       void setDefensePower(int);
-      const int getRetreatCount();
+      int getRetreatCount() const;
       void decreaseRetreatCount();
-      const bool anyItems();
-      const bool isAlive();
+      bool anyItems() const;
+      bool isAlive() const;
       int operator*(Monster& m);
-    //constructors
-      Hero(int, int, int, int);
-  
-    //health mutator and accessor
+      //health mutator and accessor
       void setHP(int);
       int getHP() const;
 
-    //AttackPower mutator and accessor
+      //AttackPower mutator and accessor
       void setAttackPower(int);
       int getAttackPower() const;
+    //constructors
+      Hero();
+      Hero(int, int, int, int);
+
+      
 };
