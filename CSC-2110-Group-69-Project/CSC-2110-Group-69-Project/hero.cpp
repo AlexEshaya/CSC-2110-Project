@@ -88,3 +88,23 @@ const bool Hero::isAlive()
     return false;
   }
 }
+
+void Hero::setHP(int h)
+{
+    health = h;
+}
+int Hero::getHP() const
+{
+    return health;
+}
+
+//AttackPower mutator and accessor
+void Hero::setAttackPower(int ap)
+{
+    attackPower = ap;
+}
+
+int Hero::getAttackPower() const
+{
+    return attackPower;
+}
