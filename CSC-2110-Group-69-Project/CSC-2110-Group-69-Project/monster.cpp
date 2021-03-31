@@ -1,12 +1,12 @@
 #include "monster.h"
 
-Monster::Monster(int hp, int attackPower)
+Monster::Monster(int hP, int aP)
 {
-  hp = hp;
+  hp = hP;
   
-  if (attackPower => 1)
+  if (aP => 1)
   {
-    attackPower = attackPower;
+    attackPower = aP;
   }
 }
 
