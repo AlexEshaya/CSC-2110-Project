@@ -1,17 +1,58 @@
-
 #include "room.h"
 
-Room::Room(string room_name, Room* A, Room* B, Room* C, Room* D, bool final_room)
+Room::Room(string room_name, Room* n, Room* s, Room* e, Room* w, bool room)
 {
 	name = room_name;
-	north = A;
-	south = B;
-	east = C;
-	west = D;
-	exit = final_room;
+	north = n;
+	south = s;
+	east = e;
+	west = w;
+
+	if (room == true) 
+	{
+		start = true;
+	}
+	else 
+	{
+		exit = true;
+	}
+	
 }
 
-//make rest of constructors
+Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj) 
+{
+	name = room_name;
+	north = n;
+	south = s;
+	east = e;
+	west = w;
+
+	roomMonster = obj;
+}
+
+Room(string room_name, Room* n, Room* s, Room* e, Room* w, Item* obj) 
+{
+	name = room_name;
+	north = n;
+	south = s;
+	east = e;
+	west = w;
+
+	roomItem = obj;
+}
+
+Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj1, Item* obj2) 
+{
+	name = room_name;
+	north = n;
+	south = s;
+	east = e;
+	west = w;
+	roomMonster = obj1;
+	roomItem = obj2;
+}
+
+
 //make sure these work and check if we need to set them to nullptr 
 
 void Room::setName(string room_name) 
@@ -93,6 +134,3 @@ bool Room::isExit()
 	}
 
 }
-
-
-
