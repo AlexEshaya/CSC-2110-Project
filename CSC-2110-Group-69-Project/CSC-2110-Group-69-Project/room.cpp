@@ -8,18 +8,18 @@ Room::Room(string room_name, Room* n, Room* s, Room* e, Room* w, bool room)
 	east = e;
 	west = w;
 
-	if (room == true) 
+	if (room == true)
 	{
 		start = true;
 	}
-	else 
+	else
 	{
 		exit = true;
 	}
-	
+
 }
 
-Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj) 
+Room::Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj)
 {
 	name = room_name;
 	north = n;
@@ -30,7 +30,7 @@ Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj)
 	roomMonster = obj;
 }
 
-Room(string room_name, Room* n, Room* s, Room* e, Room* w, Item* obj) 
+Room::Room(string room_name, Room* n, Room* s, Room* e, Room* w, Item* obj)
 {
 	name = room_name;
 	north = n;
@@ -41,7 +41,7 @@ Room(string room_name, Room* n, Room* s, Room* e, Room* w, Item* obj)
 	roomItem = obj;
 }
 
-Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj1, Item* obj2) 
+Room::Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj1, Item* obj2)
 {
 	name = room_name;
 	north = n;
@@ -55,12 +55,12 @@ Room(string room_name, Room* n, Room* s, Room* e, Room* w, Monster* obj1, Item* 
 
 //make sure these work and check if we need to set them to nullptr 
 
-void Room::setName(string room_name) 
+void Room::setName(string room_name)
 {
 	name = room_name;
 }
 
-string Room::getName()const 
+string Room::getName()const
 {
 	return name;
 }
@@ -94,9 +94,27 @@ void Room::setSouthRoom(Room* S)
 	cout << "have now set south.";
 }
 
+Monster* Room::getRoomMonster() const
+{
+	return roomMonster;
+}
 
+Item* Room::getRoomItem() const
+{
+	return roomItem;
+}
 
-Room* Room::getEastRoom()const 
+void Room::setRoomMonster(Monster *m)
+{
+	roomMonster = m;
+}
+
+void Room::setRoomItem(Item *t)
+{
+	roomItem = t;
+}
+
+Room* Room::getEastRoom()const //need to change to &'s ???
 {
 	cout << name << " is in the east room." << endl;
 	return east;
@@ -120,14 +138,14 @@ Room* Room::getNorthRoom()const
 	return north;
 }
 
-bool Room::isExit() 
+bool Room::isExit()
 {
 	if (exit == true)
 	{
 		cout << "You have won! This is the final room. GAME OVER";
 		return true;
 	}
-	else 
+	else
 	{
 		cout << "You have been defeated! GAME OVER";
 		return false;
