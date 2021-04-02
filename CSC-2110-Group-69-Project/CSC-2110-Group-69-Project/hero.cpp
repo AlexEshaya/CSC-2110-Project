@@ -13,75 +13,84 @@ Hero::Hero(int hP, int aP, int dP, int rC)
     Item* bag[3];
 }
 
-// functions!
-int operator*(Monster& m)
-{
-   /*Monster.hp = Monster.hp - hero.attackPower < 0 ? 0 : Monster.hp - hero.attackPower;
-    hero.hp = hero.hp - Monster.attackPower / hero.defensePower;
+// Functions!
 
-    Monster.decreaseAttackPower;
-    hero.decreaseDefensePower;
+// Overload the multiplication operator when multiplying Hero * Monster!
+int Hero::operator*(Monster& m)
+{ 
+    m.setHP(m.getHP() - getAttackPower() < 0 ? 0 : m.getHP() - getAttackPower());
+    setHP(getHP() - m.getAttackPower() / getDefensePower());
 
-    if (hero.hp == 0) // hero died
+    m.decreaseAttackPower();
+    decreaseDefensePower();
+
+    if (getHP() == 0) // Hero died!
     {
         return -1;
     }
-
-    else if (Monster.hp == 0)  // monster died
+    else if (m.getHP() == 0)  // Monster died!
     {
         return 1;
     }
-
-    else   // no character died
+    else   // No character died!
     {
         return 0;
-    }*/
+    }
 }
 
+// Get the value for defensePower!
 int Hero::getDefensePower() const
 {
     return defensePower;
 }
 
+// Decreases defensePower by 1!
 void Hero::decreaseDefensePower()
 {
     defensePower = defensePower - 1;
 }
 
+// Set the value for defensePower!
 void Hero::setDefensePower(int dP)
 {
+    // defensePower cannot be less than 1!
     if (dP >= 1)
     {
         defensePower = dP;
     }
 }
 
+// Get the value for retreatCount!
 int Hero::getRetreatCount() const
 {
     return retreatCount;
 }
 
+// Decreases retreatCount by 1!
 void Hero::decreaseRetreatCount()
 {
     retreatCount = retreatCount - 1;
 }
 
- bool Hero::anyItems() const
+bool Hero::anyItems() const 
 {
-    if (Item* bag[3] = NULL)
+    for (int i = 0; i < 3; i++)
     {
-        return false;
-    }
-
-    else
-    {
-        return true;
+        // Returns false when ALL pointers in bag are NULL!
+        if (bag[i] == NULL)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
 
 bool Hero::isAlive() const
 {
-    if (health > 0)
+    if (health >= 1)
     {
         return true;
     }
@@ -113,3 +122,17 @@ int Hero::getAttackPower() const
     return attackPower;
 }
 
+//Checks which item is selected and adds the value
+void Hero::useItem(int bagIndex) {
+    if (bag[bagIndex]->isHP() == true) {
+		setHP(getHP() + bag[bagIndex]->getValue());
+	}
+	else if (bag[bagIndex]->isDefense() == true) {
+		setDefensePower(getDefensePower() + bag[bagIndex]->getValue());
+	}
+	else if (bag[bagIndex]->isAttack() == true) {
+		setAttackPower(getAttackPower() + bag[bagIndex]->getValue());
+	} else {
+		cout << "Empty slot. No Item used" << endl;
+	}
+}
