@@ -1,6 +1,6 @@
 #include "game.h"
 
-game::game() {
+game::game() { //Intialize hero
 	
 	createMap();
 }
@@ -9,18 +9,18 @@ void game::createMap() {
 	Item hpUP(0, 100);
 	Item dfUP(1, 50);
 	Item atkUP(2, 30);
-	*items[0] = hpUP;
-	*items[1] = dfUP;
-	*items[2] = atkUP;
+	items[0] = &hpUP;
+	items[1] = &dfUP;
+	items[2] = &atkUP;
 
 	Monster m1(500, 45);
 	Monster m2(500, 45);
 	Monster m3(500, 45);
 	Monster m4(500, 45);
-	*monsters[0] = m1;
-	*monsters[1] = m2;
-	*monsters[2] = m3;
-	*monsters[3] = m4;
+	monsters[0] = &m1;
+	monsters[1] = &m2;
+	monsters[2] = &m3;
+	monsters[3] = &m4;
 
 	//initialize starting room
 	Room start("Start", NULL ,NULL ,NULL ,NULL ,true);//may need to change to nullptr??
@@ -126,7 +126,7 @@ void game::run() {
 			cout << "Your hero has " << heroName.getRetreatCount() << " retreat(s) available." << endl;
 			cout << "Would you like to retreat? (y/n): ";
 			cin >> input;
-			if (input = 'y') {
+			if (input == 'y') {
 				heroName.decreaseRetreatCount();
 				currentRoom = previousRoom;
 			}
@@ -158,12 +158,11 @@ void game::run() {
 			cin >> useItemInput;
 
 			// While loop validates user input, if it is an incorrect an error message is produced. It then requests a new input.
-			while (useItemInput != 'y' || 'n')
+			while (useItemInput != 'y' && useItemInput != 'n')
 			{
 				cout << "You have entered an incorrect option. Choose 'y' to use an item, or 'n' to not use an item: ";
 				cin >> useItemInput;
 			}
-			
 
 			if(useItemInput == 'y')
 			{
@@ -172,36 +171,97 @@ void game::run() {
 				cin >> slotNumberInput;
 				
 				// While loop validates user input, if it is an incorrect an error message is produced. It then requests a new input.
-				while (slotNumberInput != 1 || 2 || 3)
+				while (slotNumberInput != 1 && slotNumberInput != 2 && slotNumberInput != 3)
 				{
 					cout << "You have entered an incorrect slot number. For slot 1, enter '1', for slot 2 enter '2', for slot 3 enter '3': ";
 					cin >> slotNumberInput;
 				}
 				cout << endl;
 				
+				//Runs the useItem function based off which slot is chosen
 				switch (slotNumberInput-1) {
 				case 0:
-					if () {
-
-					}
+					heroName.useItem(0);
 					break;
 				case 1:
+					heroName.useItem(1);
 					break;
 				case 2:
+					heroName.useItem(2);
 					break;
 				}
-
 			}
 			else if (useItemInput == 'n')
 			{
-				cout << "You have chosen not to use an item." << endl;
+				cout << "You have chosen to not use an item." << endl;
 			}
 		}
 		//fight
-
-		//death check
+		if (currentRoom->getRoomMonster() != NULL) {
+			while (heroName.getHP() > 0 && currentRoom->getRoomMonster()->getHP() > 0) {
+				switch (heroName * *currentRoom->getRoomMonster()) {
+				case -1: //hero death case
+					cout << "You died";
+					break;
+				case 0: //monster death case
+					cout << "The monster died";
+					break;
+				case 1: //no death
+					break;
+				}
+			}
+		}
 		//pickup item
+		int slotInput;
+		if (currentRoom->getRoomItem() != NULL){ 
+			//Prints bag contents
+			cout << "Bag Contents: " << endl;
+			for (int i = 0; i < 3; i++) {
+				if (heroName.bag[i]->isHP() == true) {
+					cout << "Slot " << i + 1 << ": HP Item" << endl;
+				}
+				else if (heroName.bag[i]->isDefense() == true) {
+					cout << "Slot " << i + 1 << ": Defense Up Item" << endl;
+				} 
+				else if (heroName.bag[i]->isAttack() == true) {
+					cout << "Slot " << i + 1 << ": Attack Up Item" << endl;
+				} else {
+					cout << "Slot " << i + 1 << ": Empty Slot" << endl;
+				}
+			}
+			//Prompts user for input
+			cout << "Want to pick up Item (y/n)? ";
+			cin >> input;
+
+			if (input == 'y'||input=='Y') {
+				cout << "Select slot to store item in (1 - 3): ";
+				cin >> slotInput;
+
+				//Deletes old item obj if present and new item obj to bag.
+				if (heroName.bag[slotInput] != NULL){
+					delete heroName.bag[slotInput];
+					heroName.bag[slotInput] = currentRoom->getRoomItem(); 
+				} else{
+					heroName.bag[slotInput] = currentRoom->getRoomItem(); 
+				}
+				//Removes reference to item obj from room
+				delete currentRoom->getRoomItem();
+			}
+		}
 		//move rooms
+		cout << endl << "Current Room: " << currentRoom->getName();
+		if(currentRoom->getNorthRoom() != NULL) {
+			cout << endl << "N) " << currentRoom->getNorthRoom()->getName();
+		}
+		if (currentRoom->getEastRoom() != NULL) {
+			cout << endl << "E) " << currentRoom->getEastRoom()->getName();
+		}
+		if (currentRoom->getSouthRoom() != NULL) {
+			cout <<endl << "S) " << currentRoom->getSouthRoom()->getName();
+		}
+		if (currentRoom->getWestRoom() != NULL) {
+			cout << endl << "W) " << currentRoom->getWestRoom()->getName();
+		}
 			
 	}
 	
