@@ -9,8 +9,6 @@ class game{
 	//private variables
 		Room* previousRoom;
 		Room* currentRoom;
-		Room *rooms[8];
-		Item* items[3];
 		Monster* monsters[3];
 		Room* rPtr;
 		//Hero heroName;
