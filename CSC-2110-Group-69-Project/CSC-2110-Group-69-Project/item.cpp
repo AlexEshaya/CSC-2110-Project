@@ -17,7 +17,7 @@ Item:Item(int TypeInput, int ValueInput)
 // Check if item is HP item
 bool Item::isHP() const
 {
-  if (type = 0)
+  if (type == 0)
   {
     return true;
   }
@@ -30,7 +30,7 @@ bool Item::isHP() const
 // Check if item is defense item
 bool Item::isDefense() const
 {
-  if (type = 1)
+  if (type == 1)
   {
     return true;
   }
@@ -43,7 +43,7 @@ bool Item::isDefense() const
 // Check if item is attack item
 bool Item::isAttack() const
 {
-  if (type = 3)
+  if (type == 3)
   {
     return true;
   }
