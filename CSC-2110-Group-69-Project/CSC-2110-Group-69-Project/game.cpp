@@ -5,67 +5,61 @@ game::game() { //Intialize hero
 	createMap();
 }
 
-void game::createMap() {
-	Item hpUP(0, 100);
-	Item dfUP(1, 50);
-	Item atkUP(2, 30);
-	items[0] = &hpUP;
-	items[1] = &dfUP;
-	items[2] = &atkUP;
+void game::swap(Room* xp, Room* yp)
+{
+	Room temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
 
-	Monster m1(500, 45);
-	Monster m2(500, 45);
-	Monster m3(500, 45);
-	Monster m4(500, 45);
-	monsters[0] = &m1;
-	monsters[1] = &m2;
-	monsters[2] = &m3;
-	monsters[3] = &m4;
+void game::createMap() {
+	Item* hpUP = new Item(0, 100);
+	Item* dfUP = new Item(1, 50);
+	Item* atkUP = new Item(2, 30);
+
+	Monster* m1 = new Monster(50, 45);
+	Monster* m2 = new Monster(50, 45);
+	Monster* m3 = new Monster(50, 45);
+	Monster* m4 = new Monster(50, 45);
+
 
 	//initialize starting room
-	Room start("Start", NULL ,NULL ,NULL ,NULL ,true);//may need to change to nullptr??
+	Room* start= new Room("Start", NULL ,NULL ,NULL ,NULL ,false);//may need to change to nullptr??
 	//room 2
-	Room two("Room 2", NULL, NULL, NULL, NULL, monsters[0]);
+	Room* two = new Room("Room 2", NULL, NULL, NULL, NULL, m1);
 	//room 3
-	Room three("Room 3", NULL, NULL, NULL, NULL, items[0]);
+	Room* three = new Room("Room 3", NULL, NULL, NULL, NULL, hpUP);
 	//4a
-	Room fourA("Room 4", NULL, NULL, NULL, NULL, monsters[1], items[1]);
+	Room* fourA = new Room("Room 4", NULL, NULL, NULL, NULL, m2, dfUP);
 	//4b
-	Room fourB("Room 4", NULL, NULL, NULL, NULL, monsters[2]);
+	Room* fourB = new Room("Room 4", NULL, NULL, NULL, NULL, m3);
 	//room 5
-	Room five("Room 5", NULL, NULL, NULL, NULL, items[2]);
+	Room* five = new Room("Room 5", NULL, NULL, NULL, NULL, atkUP);
 	//room 6
-	Room six("Room 6", NULL, NULL, NULL, NULL, monsters[3]);
+	Room* six = new Room("Room 6", NULL, NULL, NULL, NULL, m4);
 	//initialize end room
-	Room end("Exit Room", NULL, NULL, NULL, NULL, false);
+	Room* end = new Room("Exit Room", NULL, NULL, NULL, NULL, true);
 
 	//map build
-	*rPtr = two;
-	start.setEastRoom(rPtr);
+	start->setEastRoom(two);
 
-	*rPtr = three;
-	two.setSouthRoom(rPtr);
+	two->setSouthRoom(three);
 
-	*rPtr = fourA;
-	three.setEastRoom(rPtr);
+	three->setEastRoom(fourA);
 
-	*rPtr = fourB;
-	three.setSouthRoom(rPtr);
+	three->setSouthRoom(fourB);
 
-	*rPtr = five;
-	fourB.setSouthRoom(rPtr);
+	fourB->setSouthRoom(five);
 
-	*rPtr = six;
-	five.setEastRoom(rPtr);
+	five->setEastRoom(six);
 
-	*rPtr = end;
-	six.setSouthRoom(rPtr);
+	six->setSouthRoom(end);
 
-	*currentRoom = start;
+	currentRoom = start;
 }
 
 void game::run() {
-	Hero heroName(100, 20, 10, 3); // fix inheritence later!
+	Hero heroName(100, 20, 10, 10); // fix inheritence later!
 	previousRoom = NULL;
 	
 	//While (hero.alive and !currentRoom.isExit){
@@ -97,40 +91,41 @@ void game::run() {
 	//}
 
 	//run while player is alive and not in exit room
-	while (heroName.isAlive() && !(currentRoom->isExit()) == true) {
+	while (heroName.isAlive() == true && currentRoom->isExit() == false) {
 
 
 		//current room information display//
-		cout << "//Room: " << currentRoom->getName() << endl;
-			//monster information
-		if (currentRoom->getRoomMonster()!=NULL) {
-			cout << "!This room has a monster!" << endl;
-			cout << "Monster HP: " << currentRoom->getRoomMonster()->getHP() << endl; //?
-			cout << "Monster AP: " << currentRoom->getRoomMonster()->getAttackPower() << endl; //?
-		}
-			//item information
-		else if (currentRoom->getRoomItem() != NULL) {
-			cout << "!This room has an item!";
-			cout << "Item: " << currentRoom->getRoomItem(); //?
-			cout << "Item Value: " << currentRoom->getRoomItem()->getValue(); //?
-		}
-			//if no monster and no item
-		else {
-			cout << "//Monster Status//" << endl;
-			cout << "Room " << currentRoom->getName() << "is empty." << endl;
-		}
-
-			//prompt for retreat if possible
-		if (heroName.getRetreatCount() != 0 && previousRoom!=NULL) {
-
-			cout << "Your hero has " << heroName.getRetreatCount() << " retreat(s) available." << endl;
-			cout << "Would you like to retreat? (y/n): ";
-			cin >> input;
-			if (input == 'y') {
-				heroName.decreaseRetreatCount();
-				currentRoom = previousRoom;
+			cout << "//Room: " << currentRoom->getName() << endl;
+			
+			//if monster and item display info
+			if (currentRoom->getRoomMonster()!=NULL) {
+				cout << "!This room has a monster!" << endl;
+				cout << "Monster HP: " << currentRoom->getRoomMonster()->getHP() << endl; //?
+				cout << "Monster AP: " << currentRoom->getRoomMonster()->getAttackPower() << endl; //?
 			}
-		}
+			//item information
+			if (currentRoom->getRoomItem() != NULL) {
+				cout << "!This room has an item!";
+				cout << "Item: " << currentRoom->getRoomItem(); //?
+				cout << "Item Value: " << currentRoom->getRoomItem()->getValue(); //?
+			}
+			//if no monster and no item
+			else {
+				cout << endl << "This room is empty.";
+			}
+		
+
+		//prompt for retreat if possible
+			if (heroName.getRetreatCount() != 0 && previousRoom!=NULL) {
+
+				cout << "Your hero has " << heroName.getRetreatCount() << " retreat(s) available." << endl;
+				cout << "Would you like to retreat? (y/n): ";
+				cin >> input;
+				if (input == 'y') {
+					heroName.decreaseRetreatCount();
+					currentRoom = previousRoom;
+				}
+			}
 
 		//USE ITEM PROCESS
 		if (heroName.anyItems() == true) {
@@ -262,6 +257,34 @@ void game::run() {
 		if (currentRoom->getWestRoom() != NULL) {
 			cout << endl << "W) " << currentRoom->getWestRoom()->getName();
 		}
+
+		cout << endl << "Enter letter of direction to move in: ";
+		cin >> input;
+
+		previousRoom = currentRoom;
+		currentRoom = NULL;
+		while (currentRoom == NULL) {
+			if (input == 'n' && previousRoom->getNorthRoom() != NULL) {
+				currentRoom = previousRoom->getNorthRoom();
+			}
+			else if (input == 'e' && previousRoom->getEastRoom() != NULL) {
+				currentRoom = previousRoom->getEastRoom();
+			}
+			else if (input == 's' && previousRoom->getSouthRoom() != NULL) {
+				currentRoom = previousRoom->getSouthRoom();
+			}
+			else if (input == 'w' && previousRoom->getWestRoom() != NULL) {
+				currentRoom = previousRoom->getWestRoom();
+				
+			}
+			else {
+				cout << endl << "invalid input!";
+				cout << endl << "Enter letter of direction to move in: ";
+				cin >> input;
+			}
+		}
+		cout << endl;
+
 			
 	}
 	
