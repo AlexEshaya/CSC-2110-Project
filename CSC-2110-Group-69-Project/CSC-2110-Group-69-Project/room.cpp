@@ -10,10 +10,6 @@ Room::Room(string room_name, Room* n, Room* s, Room* e, Room* w, bool room)
 
 	if (room == true)
 	{
-		start = true;
-	}
-	else
-	{
 		exit = true;
 	}
 
@@ -70,28 +66,28 @@ void Room::setWestRoom(Room* W)
 {
 	W->east = this->west;
 	west = W;
-	cout << "have now set west.";
+	//cout << "have now set west.";
 }
 
 void Room::setEastRoom(Room* E)
 {
 	E->west = this->east;
 	east = E;
-	cout << "room is set to east.";
+	//cout << "room is set to east.";
 }
 
 void Room::setNorthRoom(Room* N)
 {
 	N->south = this->north;
 	north = N;
-	cout << "have now set north.";
+	//cout << "have now set north.";
 }
 
 void Room::setSouthRoom(Room* S)
 {
 	S->north = this->south;
 	south = S;
-	cout << "have now set south.";
+	//cout << "have now set south.";
 }
 
 Monster* Room::getRoomMonster() const
@@ -116,25 +112,25 @@ void Room::setRoomItem(Item *t)
 
 Room* Room::getEastRoom()const //need to change to &'s ???
 {
-	cout << name << " is in the east room." << endl;
+	//cout << name << " is in the east room." << endl;
 	return east;
 }
 
 Room* Room::getWestRoom()const
 {
-	cout << name << " is in the west room." << endl;
+	//cout << name << " is in the west room." << endl;
 	return west;
 }
 
 Room* Room::getSouthRoom()const
 {
-	cout << name << " is in the east room." << endl;
+	//cout << name << " is in the east room." << endl;
 	return south;
 }
 
 Room* Room::getNorthRoom()const
 {
-	cout << name << " is in the north room." << endl;
+	//cout << name << " is in the north room." << endl;
 	return north;
 }
 
@@ -142,13 +138,13 @@ bool Room::isExit()
 {
 	if (exit == true)
 	{
-		cout << "You have won! This is the final room. GAME OVER";
+		//cout << endl << "exit" << endl;
 		return true;
 	}
-	else
-	{
-		cout << "You have been defeated! GAME OVER";
+	else {
+		//cout << endl << "not exit" << endl;
 		return false;
 	}
+
 
 }
