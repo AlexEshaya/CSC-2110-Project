@@ -44,13 +44,13 @@ int Hero::getDefensePower() const
     return defensePower;
 }
 
-// Decreases defensePower by 1!
+// DefensePower mutator!
 void Hero::decreaseDefensePower()
 {
     defensePower = defensePower - 1;
 }
 
-// Set the value for defensePower!
+// DefensePower mutator!
 void Hero::setDefensePower(int dP)
 {
     // defensePower cannot be less than 1!
@@ -60,18 +60,19 @@ void Hero::setDefensePower(int dP)
     }
 }
 
-// Get the value for retreatCount!
+// RetreatCount accessor!
 int Hero::getRetreatCount() const
 {
     return retreatCount;
 }
 
-// Decreases retreatCount by 1!
+// RetreatCount mutator!
 void Hero::decreaseRetreatCount()
 {
     retreatCount = retreatCount - 1;
 }
 
+// items in bag validator!
 bool Hero::anyItems() const 
 {
     for (int i = 0; i < 3; i++)
@@ -88,6 +89,7 @@ bool Hero::anyItems() const
     }
 }
 
+// Alive validator!
 bool Hero::isAlive() const
 {
     if (health >= 1)
@@ -101,6 +103,7 @@ bool Hero::isAlive() const
     }
 }
 
+// HEALTH mutator and accessor!
 void Hero::setHP(int h)
 {
     health = h;
@@ -111,7 +114,7 @@ int Hero::getHP() const
     return health;
 }
 
-//AttackPower mutator and accessor
+// AttackPower mutator and accessor!
 void Hero::setAttackPower(int ap)
 {
     attackPower = ap;
@@ -122,7 +125,7 @@ int Hero::getAttackPower() const
     return attackPower;
 }
 
-//Checks which item is selected and adds the value
+// Checks which item is selected and adds the value
 void Hero::useItem(int bagIndex) {
     if (bag[bagIndex]->isHP() == true) {
 		setHP(getHP() + bag[bagIndex]->getValue());
