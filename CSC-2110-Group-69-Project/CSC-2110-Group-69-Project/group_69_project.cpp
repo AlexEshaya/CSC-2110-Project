@@ -2,10 +2,15 @@
 //
 // Title:      Final Project
 // Course:     CSC 2110
-// Author:     Lucas Jackman, Neil Rastogi, Luke Javier,
+// Author:     Lucas "Wolverine" Jackman, Neil the creator of Rastogi, Luke Javier without the J, Alexander of Eshaya, Soham hailing from Bhavsar
 // Date:       3/11/2021
 // Description:
-//	A C++ console based game.
+//	A simple C++ game. In this game, the player moves a character 
+//  (hero) through multiple rooms to get to the exit. 
+//  In some of the rooms, the hero may find other characters (monsters) and items. 
+//  The hero will battle the enemies and take the times.
+//  The player wins when the hero reaches the exit.
+//  The player loses when hero’s health points(HP) are zero(0).
 //
 //==========================================================
 #include <cstdlib> // For several general-purpose functions
@@ -19,18 +24,15 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 
 int main()
 {
-	//header
-	cout << "|//////////////|" << endl;
-	cout << "|   Group 69   |" << endl;
-	cout << "|//////////////|" << endl;
+	// App Header!
+	cout << "|////////////////////////////|" << endl;
+	cout << "|   Group 69 Final Project   |" << endl;
+	cout << "|////////////////////////////|" << endl << endl;
 	
 	//game run
 	game newGame;
 	newGame.run();
 	
-	//end of program
-	cout << endl << endl << "end." << endl;
+	// App Close!
 	return 0;
-	
-	// OWA OWA
 }
