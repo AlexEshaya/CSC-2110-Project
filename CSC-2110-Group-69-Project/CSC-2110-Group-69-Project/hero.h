@@ -20,17 +20,19 @@ class Hero : public Character{
       void decreaseRetreatCount();
       bool anyItems() const;
       bool isAlive() const;
-      int operator*(Monster& m);
+      int operator*(Monster&m);
+      void displayStats();
       //health mutator and accessor
       void setHP(int);
       int getHP() const;
+      void useItem(int);
 
       //AttackPower mutator and accessor
       void setAttackPower(int);
       int getAttackPower() const;
     //constructors
-      Hero();
       Hero(int, int, int, int);
+      //Hero();
 
       
 };
