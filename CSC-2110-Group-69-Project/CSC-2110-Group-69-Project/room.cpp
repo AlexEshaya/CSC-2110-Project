@@ -145,6 +145,4 @@ bool Room::isExit()
 		//cout << endl << "not exit" << endl;
 		return false;
 	}
-
-
 }
