@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "monster.h"
+#include "item.h"
 using namespace std;
 
 class Room {
